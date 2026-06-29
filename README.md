@@ -7,7 +7,7 @@
 - Juan Arizmendi
 
 ## Dataset
-AI4I Predictive Maintenance Dataset
+AI4I 2020 Predictive Maintenance Dataset
 
 ## Modelos Evaluados
 - Logistic Regression
