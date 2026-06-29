@@ -1,17 +1,10 @@
-# Hackaton-2
 
-Proyecto en equipo Tecmilenio 
-# Hackaton-2
+# Actividad 6 - Evaluación y Validación de Modelos
 
 ## Integrantes
 - Erika Cazarez
 - Luis Flores
 - Juan Arizmendi
-
-## Objetivo
-Desarrollar una solución basada en Inteligencia Artificial para resolver un problema de negocio.
-
-# Actividad 6 - Evaluación y Validación de Modelos
 
 ## Dataset
 AI4I Predictive Maintenance Dataset
