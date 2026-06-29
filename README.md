@@ -1,6 +1,5 @@
 # Hackaton-2
 
-Proyecto en equipo Tecmilenio# Hackaton-2
 Proyecto en equipo Tecmilenio 
 # Hackaton-2
 
