@@ -1,55 +1,188 @@
+# Fase II
+## Despliegue de una API de Machine Learning con FastAPI, Docker y Render
 
-# Actividad 6 - Evaluación y Validación de Modelos
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
+![Docker](https://img.shields.io/badge/Docker-Container-blue)
+![Render](https://img.shields.io/badge/Render-Cloud-purple)
+![License](https://img.shields.io/badge/License-Educational-orange)
 
-## Integrantes
-- Erika Cazarez
-- Luis Flores
-- Juan Arizmendi
+---
 
-## Dataset
-AI4I 2020 Predictive Maintenance Dataset
+# 👩‍💻 Autor
 
-## Modelos Evaluados
-- Logistic Regression
-- Random Forest
+**Erika Cazares **
+
+Máster en Inteligencia Artificial – Tecmilenio
+
+---
+
+# 📌 Objetivo
+
+Desarrollar y desplegar una API REST para un modelo de Machine Learning utilizando FastAPI, contenerizar la aplicación mediante Docker y publicarla en la nube usando Render para realizar inferencias desde cualquier dispositivo con acceso a Internet.
+
+---
+
+# 🏗 Arquitectura del proyecto
+
+```text
+                Dataset AI4I
+                      │
+                      ▼
+          Entrenamiento del Modelo
+                      │
+                      ▼
+                 modelo.pkl
+                      │
+                      ▼
+                  FastAPI
+                      │
+                      ▼
+                   Docker
+                      │
+                      ▼
+                  GitHub
+                      │
+                      ▼
+             Render (Cloud)
+                      │
+                      ▼
+        API pública disponible 24/7*
+```
+
+\*En el plan gratuito de Render la instancia entra en reposo tras un periodo de inactividad y se reactiva automáticamente cuando recibe una nueva solicitud.
+
+---
+
+# 🛠 Tecnologías utilizadas
+
+- Python 3.11
+- FastAPI
+- Uvicorn
+- Docker
+- Git
+- GitHub
+- Render
+- Scikit-Learn
 - XGBoost
+- Swagger / OpenAPI
 
-## Técnicas Aplicadas
-- Matriz de Confusión
-- ROC-AUC
-- Grid Search
-- Validación Cruzada
-- Ajuste de Umbral
-- Prueba A/B
+---
 
-## Resultados
+# 📂 Estructura del proyecto
 
-| Modelo | Accuracy | Recall | F1 Score | ROC-AUC |
-|----------|----------:|----------:|----------:|----------:|
-| Logistic Regression | 0.9685 | 0.1471 | 0.2409 | 0.9000 |
-| Random Forest | 0.9825 | 0.5735 | 0.6903 | 0.9638 |
-| XGBoost | 0.9855 | 0.6912 | 0.7642 | 0.9725 |
+```
+Hackaton-2
+│
+├── app.py
+├── modelo.pkl
+├── Dockerfile
+├── requirements.txt
+├── README.md
+├── ai4i2020.csv
+├── dashboard_modelos.png
+├── .gitignore
+└── .dockerignore
+```
 
-## Modelo Seleccionado
+---
 
-XGBoost con ajuste de umbral a 0.30.
+# 🌐 API pública
 
-## Archivos
+## URL principal
 
-- Notebook: PM_AI4I_rev_2_MLOps_actividad_6.ipynb
-- Dashboard: dashboard_modelos.png
+https://hackaton-2-qlp5.onrender.com
 
-- ## Conclusiones
+---
 
-Durante esta actividad se evaluaron tres modelos de clasificación para la predicción de fallas en equipos industriales utilizando el dataset **AI4I 2020 Predictive Maintenance Dataset**.
+## Documentación Swagger
 
-Los resultados mostraron que **Logistic Regression** obtuvo una alta exactitud, pero presentó un Recall bajo, lo que indica una capacidad limitada para detectar fallas reales. Por su parte, **Random Forest** mejoró significativamente la detección de fallas y ofreció un mejor equilibrio entre precisión y sensibilidad.
+https://hackaton-2-qlp5.onrender.com/docs
 
-El modelo **XGBoost** obtuvo el mejor desempeño global, alcanzando los valores más altos de Recall, F1 Score y ROC-AUC, demostrando una mayor capacidad para identificar correctamente los eventos de falla sin afectar significativamente la precisión del modelo.
+---
 
-Mediante la aplicación de **Grid Search** y **Validación Cruzada**, se confirmó la estabilidad y capacidad de generalización del modelo seleccionado. Posteriormente, el **ajuste de umbral** y la **prueba A/B** permitieron incrementar el Recall de **69.12% a 76.47%**, aumentando la detección de fallas reales y reduciendo los falsos negativos.
+# 📡 Endpoint disponible
 
-Con base en los resultados obtenidos, se concluye que **XGBoost con un umbral optimizado de 0.30** representa la mejor alternativa para una posible implementación en escenarios de mantenimiento predictivo, ya que ofrece el mejor equilibrio entre desempeño estadístico y valor operativo para la detección temprana de fallas.
+## GET /
 
-## Autores
-Equipo Tecmilenio 2026
+Verifica que la API está activa.
+
+Respuesta:
+
+```json
+{
+    "mensaje":"API mexa de predicción de fallas CDU activa 🇲🇽"
+}
+```
+
+---
+
+## POST /predict
+
+Realiza la predicción utilizando el modelo de Machine Learning.
+
+### Ejemplo de entrada
+
+```json
+{
+  "Type":0,
+  "Air_temperature_K":304,
+  "Process_temperature_K":313,
+  "Rotational_speed_rpm":1200,
+  "Torque_Nm":65,
+  "Tool_wear_min":220
+}
+```
+
+### Ejemplo de salida
+
+```json
+{
+    "probabilidad_falla":0.9817,
+    "umbral":0.3,
+    "prediccion":1,
+    "resultado":"Riesgo de falla"
+}
+```
+
+---
+
+# 🔄 Flujo del despliegue
+
+1. Entrenamiento del modelo.
+2. Exportación del modelo (`modelo.pkl`).
+3. Desarrollo de la API con FastAPI.
+4. Contenerización mediante Docker.
+5. Versionamiento con Git.
+6. Publicación en GitHub.
+7. Despliegue automático en Render.
+8. Publicación de la API en Internet.
+
+---
+
+# ✅ Resultado
+
+Se logró desplegar exitosamente una API REST para realizar inferencias de Machine Learning desde cualquier navegador mediante una URL pública.
+
+La API responde correctamente utilizando el modelo entrenado y permite realizar predicciones a través de Swagger/OpenAPI.
+
+---
+
+# 📷 Evidencia
+
+El despliegue fue validado mediante:
+
+- API pública funcionando.
+- Swagger disponible.
+- Predicciones realizadas correctamente.
+- Despliegue automático desde GitHub mediante Render.
+
+---
+
+# 🎓 Proyecto académico
+
+Actividad desarrollada como parte del Máster en Inteligencia Artificial del Tecnológico de Monterrey (Tecmilenio), enfocada en el despliegue de modelos de Machine Learning mediante prácticas de MLOps.
+
+## Agradecimientos
+
+Este proyecto fue desarrollado por **Erika Cazarez**, con el apoyo de ChatGPT como asistente técnico para revisión de código, documentación y acompañamiento durante el proceso de desarrollo.
