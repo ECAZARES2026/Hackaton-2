@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI4I Predictive Maintenance Platform
 
 1. Introducción
@@ -426,3 +427,4 @@ flowchart TD
     S --> N
     S --> J
 ```
+=======
