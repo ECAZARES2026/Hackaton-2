@@ -30,7 +30,7 @@ jobs:
           pip install pytest
 
       - name: Ejecutar pruebas automatizadas
-        run: pytest -v
+        run: PYTHONPATH=. pytest -v
 
       - name: Validar importación de la API
         run: python -c "import app; print('API validada correctamente')"
